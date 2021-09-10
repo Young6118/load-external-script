@@ -4,7 +4,6 @@
 
 import './index.scss';
 
-import './mock';
 import main from '../components/main';
 
 document.querySelector('#load-script').addEventListener('click', () => {
