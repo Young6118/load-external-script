@@ -1,0 +1,68 @@
+{
+  "name": "mihoyo-load-external-script",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/main.js",
+  "scripts": {
+    "first": "git tag v1.0.0 && npm run postversion",
+    "patch": "npm version patch",
+    "ver": "npm version $v",
+    "postversion": "git push --follow-tags",
+    "build": "npm run lint && webpack --progress --mode=production --config ./build/webpack.config.js --env production && echo \"--------Build Success!--------\"",
+    "start": "webpack-dev-server --mode=development --config ./build/webpack.config.js --env development --host 0.0.0.0",
+    "clean": "node ./node_modules/rimraf/bin.js ./dist/*",
+    "lint": "npm run elint && npm run slint",
+    "lintFix": "npm run elintFix && npm run slintFix ",
+    "elint": "npx eslint \"./src/components/**/*.js\"",
+    "elintFix": "npx eslint \"./src/components/**/*.js\" --fix",
+    "slint": "npx stylelint \"./src/components/**/*.scss\"",
+    "slintFix": "npx stylelint \"./src/components/**/*.scss\" --fix"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@192.168.10.116:7999/plat-dev/mihoyo-component-cli.git"
+  },
+  "keywords": [
+    "component"
+  ],
+  "devDependencies": {
+    "autoprefixer": "^9.1.5",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.19",
+    "cpx": "^1.5.0",
+    "css-loader": "^1.0.0",
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-loader": "^2.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "mihoyo-mockjs": "^1.0.2",
+    "mini-css-extract-plugin": "^0.4.1",
+    "postcss-loader": "^3.0.0",
+    "pre-commit": "^1.2.2",
+    "raw-loader": "^0.5.1",
+    "rimraf": "^2.6.2",
+    "sass": "^1.26.5",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.0",
+    "stylelint": "^9.5.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-scss": "^3.3.0",
+    "url-loader": "^1.1.0",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5",
+    "webpack-merge": "^4.1.4",
+    "mihoyo-component-hooks": "^1.0.7"
+  },
+  "author": "miHoYo",
+  "license": "ISC"
+}
